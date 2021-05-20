@@ -25,7 +25,7 @@ public class Janela extends JFrame {
 
 		setSize(largura, altura);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 		//setUndecorated(true);
 
 		menu = new Menu(800, 600);

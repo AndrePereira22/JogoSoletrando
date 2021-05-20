@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import View.Cidade;
+import View.Fase;
 
 public class Sprite extends Thread {
 
@@ -69,17 +70,17 @@ public class Sprite extends Thread {
 	
 
 	public void setX(int posX) {
-		
-			this.x = posX;
-		
+		if(!colisao(Fase.getRetangulosColisao(),posX-this.x,0) ) {
+			this.x=posX;
+		}
 	}
 
 	public void setY(int posY) {
-
-			this.y = posY;
-		
+		if(!colisao(Fase.getRetangulosColisao(),0,posY-this.y)) {
+			this.y=posY;
+		}
 	}
-
+	
 	public int getX() {
 		return x;
 	}

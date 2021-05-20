@@ -32,6 +32,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	private Fase fase;
 	private Movimento mover;
 	private Soletrar soletrar;
+	
 
 	public Controle(Janela janela) {
 
@@ -45,7 +46,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		this.soletrar = janela.getSoletrar();
 		this.personagem = fase.getPersonagem();
 
-		Cidade.addCidade(new Cidade("city1"));
+		Cidade.addCidade(new Cidade("carro"));
 		audio = new Audio();
 	
 	
@@ -61,6 +62,12 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		fase.addKeyListener(this);
 		soletrar.getBtnOuvir().addActionListener(this);
 		soletrar.getBtnConfirmar().addActionListener(this);
+		menu.getSair().addActionListener(this);
+		menu.getCreditos().addActionListener(this);
+		menu.getAjuda().addActionListener(this);
+		menu.getJogar().addActionListener(this);
+		opcao.getBtnVoltar().addActionListener(this);
+		opcao.getBtnIniciar().addActionListener(this);
 
 	}
 
@@ -68,6 +75,10 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		if (e.getSource() == soletrar.getBtnConfirmar()) {
 
 			verificarPalavra();
+		}
+		if (e.getSource() == menu.getJogar()) {
+			MudarTela(opcao, menu);
+
 		}
 
 		if (e.getSource() == opcao.getBtnIniciar()) {
@@ -103,7 +114,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		while (ativo) {
 
 			try {
-
+System.out.println(janela.getWidth()+ "df "+janela.getHeight());
 				runControleDoJogo();
 
 				Thread.sleep(15);

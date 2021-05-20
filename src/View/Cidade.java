@@ -20,8 +20,8 @@ public class Cidade {
 
 	public Cidade(String nome) {
 
-		this.x = 576;
-		this.y = 192;
+		this.x = 300;
+		this.y = 500;
 
 		referencia = new ImageIcon(getClass().getResource("/" + nome + ".png"));
 

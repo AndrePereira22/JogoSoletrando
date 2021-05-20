@@ -24,15 +24,15 @@ public class Fase extends Jogo {
 
 	public void Load(String img) {
 
-		fundo = new Mapa("tileset.png", "mapa.txt");
-		colisao = new Mapa("tileset.png", "colisao.txt");
+		fundo = new Mapa("fundoSoletrando.png", "mapa.txt");
+		colisao = new Mapa("fundoSoletrando.png", "colisao.txt");
 
 		fundo.montarMapa();
 
 		retangulosColisao = colisao.montarColi();
 
 		try {
-			personagem = new Sprite(img, 2, 4, 4, 528, 120);
+			personagem = new Sprite(img, 2, 4, 4, 20, 490);
 
 		} catch (IOException e) {
 

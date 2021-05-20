@@ -93,7 +93,7 @@ public class Opcao extends JPanel {
 		add(painelRight);
 
 
-		fundo = new JLabel(new ImageIcon(getClass().getResource("/soletrando.png")));
+		fundo = new JLabel(new ImageIcon(getClass().getResource("/fundoSoletrando.png")));
 		fundo.setBounds(0, 0, 800, 600);
 		add(fundo);
 

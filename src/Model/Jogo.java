@@ -11,8 +11,8 @@ public abstract class Jogo extends JPanel implements Runnable {
 	private static final long serialVersionUID = 1L;
 
 	//dimensões
-		public static final int  LARGURA=795;
-		public static final int  ALTURA=577;
+		public static final int  LARGURA=800;
+		public static final int  ALTURA=650;
 	
 	private Thread thread;
 	private boolean running;
