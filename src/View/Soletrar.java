@@ -17,6 +17,7 @@ public class Soletrar extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private JLabel professor, main;
 	private JLabel fundo;
 	private JLabel pontos, lblTempo;
 	private JButton btnReiniciar, btnComoJogar, btnOuvir, btnConfirmar;
@@ -24,7 +25,6 @@ public class Soletrar extends JPanel {
 	private JPanel DICAS;
 	private JLabel dica;
 	private JTextField campo;
-	
 
 	public Soletrar(int largura, int altura) {
 
@@ -65,30 +65,40 @@ public class Soletrar extends JPanel {
 		add(lblTempo);
 
 		campo = new JTextField(25);
-		
+		campo.setBounds(0, 0, 295, 43);
+
 		jpPalavra = new JPanel();
 		jpPalavra.setBounds(255, 142, 295, 33);
-		//jpPalavra.setBackground(Color.blue);
+		// jpPalavra.setBackground(Color.blue);
 		jpPalavra.setLayout(new FlowLayout());
-		
-		
+
 		jpPalavra.add(campo);
 		add(jpPalavra);
-		
-		dica = new JLabel("aqui ficaraão as dicas");
+
+		dica = new JLabel("CLIQUE NO BOTÃO OUVIR PALAVRA PRA INICIAR!");
 		dica.setFont(new Font("Arial", 2, 18));
-		dica.setForeground(Color.RED);
-		dica.setBounds(10, 30, 600, 30);
+		dica.setForeground(Color.WHITE);
+		dica.setBounds(15, 10, 620, 30);
+
+		professor = new JLabel();
+		professor.setIcon(new ImageIcon(getClass().getResource("/nerd1.png")));
+		professor.setBounds(40, 440, 70, 110);
+
+		add(professor);
+
+		main = new JLabel();
+		main.setIcon(new ImageIcon(getClass().getResource("/main.png")));
+		main.setBounds(110, 460, 650, 53);
 
 		DICAS = new JPanel();
-		DICAS.setBackground(Color.WHITE);
-		DICAS.setBounds(90, 460, 608, 93);
+		// DICAS.setBackground(Color.WHITE);
+		DICAS.setBounds(120, 460, 620, 53);
 		DICAS.setLayout(null);
-		
+		DICAS.setOpaque(false);
+
 		DICAS.add(dica);
-	
 		add(DICAS);
-		
+		add(main);
 
 		fundo = new JLabel(new ImageIcon(getClass().getResource("/plano.png")));
 		fundo.setBounds(0, 0, 800, 600);
@@ -96,19 +106,17 @@ public class Soletrar extends JPanel {
 
 	}
 
-
+	public void setarIconeProfessor(String nome) {
+		professor.setIcon(new ImageIcon(getClass().getResource("/"+nome+".png")));
+	}
 
 	public JTextField getCampo() {
 		return campo;
 	}
 
-
-
 	public JButton getBtnConfirmar() {
 		return btnConfirmar;
 	}
-
-
 
 	public JPanel getBotoes() {
 		return DICAS;
@@ -121,8 +129,6 @@ public class Soletrar extends JPanel {
 	public JPanel getJpPalavra() {
 		return jpPalavra;
 	}
-
-
 
 	public JLabel getDica() {
 		return dica;

@@ -32,7 +32,7 @@ public class Fase extends Jogo {
 		retangulosColisao = colisao.montarColi();
 
 		try {
-			personagem = new Sprite(img, 2, 4, 4, 20, 490);
+			personagem = new Sprite(img, 2, 4, 4, 20, 485);
 
 		} catch (IOException e) {
 
@@ -51,11 +51,11 @@ public class Fase extends Jogo {
 
 		g.drawImage(fundo.getMapa(), 0, 0, null);
 
-		for (int i = 0; i < Cidade.getCidades().size(); i++) {
+		for (int i = 0; i < Professor.getProfessores().size(); i++) {
 
-			Cidade cidade = Cidade.getCidades().get(i);
-			if (cidade.isVisivel()) {
-				g.drawImage(cidade.getImagem(), cidade.getX(), cidade.getY(), null);
+			Professor professor = Professor.getProfessores().get(i);
+			if (professor.isVisivel()) {
+				g.drawImage(professor.getImagem(), professor.getX(), professor.getY(), null);
 			}
 
 		}

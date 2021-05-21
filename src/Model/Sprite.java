@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
-import View.Cidade;
+import View.Professor;
 import View.Fase;
 
 public class Sprite extends Thread {
@@ -55,7 +55,7 @@ public class Sprite extends Thread {
 		return false;
 
 	}
-	public boolean colisaoAlvo(Cidade tmp, int x, int y) {
+	public boolean colisaoAlvo(Professor tmp, int x, int y) {
 		Rectangle personagem = new Rectangle(getX() + x, getY() + y, getLargura(), getAltura());
 
 		Rectangle ball = new Rectangle(tmp.getX() + x, tmp.getY() + y, tmp.getLargura(), tmp.getAltura());
@@ -70,9 +70,9 @@ public class Sprite extends Thread {
 	
 
 	public void setX(int posX) {
-		if(!colisao(Fase.getRetangulosColisao(),posX-this.x,0) ) {
+		
 			this.x=posX;
-		}
+		
 	}
 
 	public void setY(int posY) {

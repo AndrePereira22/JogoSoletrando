@@ -7,21 +7,23 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Cidade {
+public class Professor {
 
 	private Image imagem;
 	private int x, y;
 	private int largura, altura;
 	private ImageIcon referencia;
+	private int professor;
 	private boolean isVisivel;
 	private static int[] posX = { 576 };
 	private static int[] posY = { 192 };
-	private static ArrayList<Cidade> cidades = new ArrayList<Cidade>();
+	private static ArrayList<Professor> professores = new ArrayList<Professor>();
 
-	public Cidade(String nome) {
+	public Professor(String nome,int x, int y, int professor) {
 
-		this.x = 300;
-		this.y = 500;
+		this.x = x;
+		this.y = y;
+		this.professor=professor;
 
 		referencia = new ImageIcon(getClass().getResource("/" + nome + ".png"));
 
@@ -33,12 +35,14 @@ public class Cidade {
 		isVisivel = true;
 	}
 
-	public static ArrayList<Cidade> getCidades() {
-		return cidades;
+	
+	public static ArrayList<Professor> getProfessores() {
+		return professores;
 	}
 
-	public static void addCidade(Cidade cidade) {
-		cidades.add(cidade);
+
+	public static void addProfessor(Professor cidade) {
+		professores.add(cidade);
 	}
 
 	public Image getImagem() {
@@ -79,6 +83,14 @@ public class Cidade {
 
 	public int getAltura() {
 		return altura;
+	}
+
+	public int getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(int professor) {
+		this.professor = professor;
 	}
 
 }

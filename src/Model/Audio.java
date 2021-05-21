@@ -16,7 +16,7 @@ public class Audio {
 	@SuppressWarnings("deprecation")
 	private AudioClip clip;
 	public Random sorteio = new Random();
-private String Dica;
+	private String Dica;
 	private Palavra palavraSorteada;
 	private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
 	private int numero;
@@ -43,12 +43,13 @@ private String Dica;
 		clip.play();
 
 	}
+
 	public void CarregarDica(String palavra) {
 		try {
 			// abre o arquivo
-System.out.println(palavra);
+
 			BufferedReader arqIn = new BufferedReader(
-					new InputStreamReader(new FileInputStream("textos/"+palavra+".txt"), "UTF-8"));
+					new InputStreamReader(new FileInputStream("textos/" + palavra + ".txt"), "UTF-8"));
 			String temp;
 			// A cada interação, é uma linha do arquivo e atribui-a a temp
 

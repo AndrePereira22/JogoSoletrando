@@ -14,12 +14,13 @@ import javax.swing.JPanel;
 
 import Model.Audio;
 import Model.Sprite;
-import View.Cidade;
+import View.Professor;
 import View.Fase;
 import View.Janela;
 import View.Menu;
 import View.Opcao;
 import View.Soletrar;
+
 
 @SuppressWarnings("deprecation")
 public class Controle implements Runnable, ActionListener, KeyListener {
@@ -32,7 +33,6 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	private Fase fase;
 	private Movimento mover;
 	private Soletrar soletrar;
-	
 
 	public Controle(Janela janela) {
 
@@ -46,10 +46,12 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		this.soletrar = janela.getSoletrar();
 		this.personagem = fase.getPersonagem();
 
-		Cidade.addCidade(new Cidade("carro"));
+		Professor.addProfessor(new Professor("nerd", 250, 430, 1));
+		Professor.addProfessor(new Professor("loira", 410, 430, 2));
+		Professor.addProfessor(new Professor("saradona", 570, 430, 3));
+		Professor.addProfessor(new Professor("veio", 700, 430, 4));
 		audio = new Audio();
-	
-	
+
 		controleEventos();
 
 		janela.setVisible(true);
@@ -86,26 +88,25 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		}
 		if (e.getSource() == soletrar.getBtnOuvir()) {
 			audio.carregarPalavra();
-			
+
 			soletrar.getDica().setText(audio.getDica());
 		}
 	}
 
 	private void verificarPalavra() {
-	
-		if(soletrar.getCampo().getText().equals(audio.getPalavraSorteada().getPalavra())) {
-			System.out.println(soletrar.getCampo().getText()+ " "+audio.getPalavraSorteada().getPalavra());
-			
+
+		if (soletrar.getCampo().getText().equals(audio.getPalavraSorteada().getPalavra())) {
+			System.out.println(soletrar.getCampo().getText() + " " + audio.getPalavraSorteada().getPalavra());
+
 			audio.mudarPalavra();
 			System.out.println("acertou");
-			
+
 			soletrar.getCampo().setText("");
-			
-		}else {
+
+		} else {
 			System.out.println("errou");
-			System.out.println(soletrar.getCampo().getText()+ " "+audio.getPalavraSorteada().getPalavra());
+			System.out.println(soletrar.getCampo().getText() + " " + audio.getPalavraSorteada().getPalavra());
 		}
-		
 
 	}
 
@@ -114,7 +115,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		while (ativo) {
 
 			try {
-System.out.println(janela.getWidth()+ "df "+janela.getHeight());
+
 				runControleDoJogo();
 
 				Thread.sleep(15);
@@ -125,6 +126,7 @@ System.out.println(janela.getWidth()+ "df "+janela.getHeight());
 	}
 
 	private void runControleDoJogo() {
+
 	}
 
 	public void MudarTela(JPanel aparece, JPanel some) {
@@ -142,11 +144,38 @@ System.out.println(janela.getWidth()+ "df "+janela.getHeight());
 
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
-			for (int i = 0; i < Cidade.getCidades().size(); i++) {
-				Cidade cidade = Cidade.getCidades().get(i);
-				if (cidade.isVisivel()) {
-					if (personagem.colisaoAlvo(Cidade.getCidades().get(i), 0, 0)) {
+			for (int i = 0; i < Professor.getProfessores().size(); i++) {
+				Professor professor = Professor.getProfessores().get(i);
+				if (professor.isVisivel()) {
+					if (personagem.colisaoAlvo(Professor.getProfessores().get(i), 0, 0)) {
 
+						switch (professor.getProfessor()) {
+
+						case 1: {
+							System.out.println("desafio do professor um ");
+							soletrar.setarIconeProfessor("nerd1");
+							
+							break;
+						}
+						case 2: {
+							System.out.println("desafio do professor dois");
+							soletrar.setarIconeProfessor("loira1");
+							break;
+						}
+						case 3: {
+							System.out.println("desafio do professor tres ");
+							soletrar.setarIconeProfessor("saradona1");
+							break;
+						}
+						case 4: {
+							System.out.println("desafio do  professor quatro");
+							soletrar.setarIconeProfessor("veio1");
+							break;
+						}
+
+						}
+
+						
 						janela.remove(fase);
 						MudarTela(soletrar, fase);
 						janela.setVisible(true);
