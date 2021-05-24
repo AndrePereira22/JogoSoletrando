@@ -50,6 +50,10 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		Professor.addProfessor(new Professor("loira", 410, 430, 2));
 		Professor.addProfessor(new Professor("saradona", 570, 430, 3));
 		Professor.addProfessor(new Professor("veio", 700, 430, 4));
+		Professor.addProfessor(new Professor("loira", 410, 430, 2));
+		Professor.addProfessor(new Professor("saradona", 570, 430, 3));
+		Professor.addProfessor(new Professor("veio", 700, 430, 4));
+		
 		audio = new Audio();
 
 		controleEventos();

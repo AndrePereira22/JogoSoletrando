@@ -19,11 +19,13 @@ public class Audio {
 	private String Dica;
 	private Palavra palavraSorteada;
 	private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
+	private ArrayList<Dica> definicoes = new ArrayList<Dica>();
 	private int numero;
 
 	public Audio() {
 
-		lerlista();
+		lerPalavras();
+		lerDefinicoes();
 	}
 
 	public void carregarPalavra() {
@@ -31,45 +33,23 @@ public class Audio {
 		numero = sorteio.nextInt(palavras.size());
 		palavraSorteada = palavras.get(numero);
 
+		setDica(definicoes.get(numero).getDefinicao());
+
 		while (palavraSorteada.isCompleto()) {
 			numero = sorteio.nextInt(palavras.size());
 			palavraSorteada = palavras.get(numero);
-		}
 
+			setDica(definicoes.get(numero).getDefinicao());
+
+		}
 		String p = palavraSorteada.getPalavra();
-		CarregarDica(p);
 
 		clip = Applet.newAudioClip(getClass().getResource("/" + p + ".wav"));
 		clip.play();
 
 	}
 
-	public void CarregarDica(String palavra) {
-		try {
-			// abre o arquivo
-
-			BufferedReader arqIn = new BufferedReader(
-					new InputStreamReader(new FileInputStream("textos/" + palavra + ".txt"), "UTF-8"));
-			String temp;
-			// A cada interação, é uma linha do arquivo e atribui-a a temp
-
-			while ((temp = arqIn.readLine()) != null) {
-				// Aqui gera a sua "lista". No caso, imprimi cada linha na tela.
-				String[] a = temp.split(";");
-				for (String each : a) {
-					Dica = each;
-				}
-
-			}
-
-		} catch (FileNotFoundException el) {
-			System.out.println("Arquivo não Encontrado!");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void lerlista() {
+	public void lerPalavras() {
 		try {
 			// abre o arquivo
 
@@ -84,6 +64,32 @@ public class Audio {
 				for (String each : a)
 
 					palavras.add(new Palavra(each));
+			}
+
+		} catch (FileNotFoundException el) {
+			System.out.println("Arquivo não Encontrado!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void lerDefinicoes() {
+		try {
+			// abre o arquivo
+
+			BufferedReader arqIn = new BufferedReader(
+					new InputStreamReader(new FileInputStream("textos/definicoes.txt"), "UTF-8"));
+			String temp;
+			// A cada interação, é uma linha do arquivo e atribui-a a temp
+
+			while ((temp = arqIn.readLine()) != null) {
+				// Aqui gera a sua "lista". No caso, imprimi cada linha na tela.
+				String[] a = temp.split(";");
+				for (String each : a)
+
+					definicoes.add(new Dica(each));
+
 			}
 
 		} catch (FileNotFoundException el) {
