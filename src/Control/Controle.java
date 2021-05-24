@@ -1,26 +1,20 @@
 package Control;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Model.Audio;
 import Model.Sprite;
-import View.Professor;
 import View.Fase;
 import View.Janela;
 import View.Menu;
 import View.Opcao;
+import View.Professor;
 import View.Soletrar;
-
 
 @SuppressWarnings("deprecation")
 public class Controle implements Runnable, ActionListener, KeyListener {
@@ -33,6 +27,8 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	private Fase fase;
 	private Movimento mover;
 	private Soletrar soletrar;
+	private int controleFase = 0;
+	private int placar = 0;
 
 	public Controle(Janela janela) {
 
@@ -46,14 +42,10 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		this.soletrar = janela.getSoletrar();
 		this.personagem = fase.getPersonagem();
 
-		Professor.addProfessor(new Professor("nerd", 250, 430, 1));
-		Professor.addProfessor(new Professor("loira", 410, 430, 2));
-		Professor.addProfessor(new Professor("saradona", 570, 430, 3));
-		Professor.addProfessor(new Professor("veio", 700, 430, 4));
-		Professor.addProfessor(new Professor("loira", 410, 430, 2));
-		Professor.addProfessor(new Professor("saradona", 570, 430, 3));
-		Professor.addProfessor(new Professor("veio", 700, 430, 4));
-		
+		Professor.addProfessoresAux();
+
+		Professor.getProfessores().add(Professor.getAuxProfessores().get(controleFase));
+
 		audio = new Audio();
 
 		controleEventos();
@@ -74,6 +66,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		menu.getJogar().addActionListener(this);
 		opcao.getBtnVoltar().addActionListener(this);
 		opcao.getBtnIniciar().addActionListener(this);
+		soletrar.getBtnPular().addActionListener(this);
 
 	}
 
@@ -86,14 +79,28 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 			MudarTela(opcao, menu);
 
 		}
+		if (e.getSource() == soletrar.getBtnPular()) {
+
+			audio.carregarPalavra();
+			soletrar.getDica().setText(audio.getDica());
+			audio.ouvirPalavra();
+
+		}
 
 		if (e.getSource() == opcao.getBtnIniciar()) {
 			MudarTela(fase, opcao);
 		}
 		if (e.getSource() == soletrar.getBtnOuvir()) {
-			audio.carregarPalavra();
 
-			soletrar.getDica().setText(audio.getDica());
+			if (audio.getClip() == null) {
+				audio.carregarPalavra();
+				audio.ouvirPalavra();
+				soletrar.getDica().setText(audio.getDica());
+
+			} else {
+				audio.ouvirPalavra();
+			}
+
 		}
 	}
 
@@ -104,6 +111,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 
 			audio.mudarPalavra();
 			System.out.println("acertou");
+			placar++;
 
 			soletrar.getCampo().setText("");
 
@@ -131,6 +139,22 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 
 	private void runControleDoJogo() {
 
+		if (placar == 1) {
+			placar = 0;
+			controleFase++;
+			addNovoProfessor();
+		}
+
+	}
+
+	public void addNovoProfessor() {
+		Professor.getProfessores().clear();
+		Professor.getProfessores().add(Professor.getAuxProfessores().get(controleFase));
+		janela.add(fase);
+		MudarTela(fase, soletrar);
+		audio.setClip(null);
+		janela.setVisible(true);
+		
 	}
 
 	public void MudarTela(JPanel aparece, JPanel some) {
@@ -153,33 +177,54 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 				if (professor.isVisivel()) {
 					if (personagem.colisaoAlvo(Professor.getProfessores().get(i), 0, 0)) {
 
-						switch (professor.getProfessor()) {
+						switch (professor.getCodigo()) {
 
-						case 1: {
+						case 0: {
 							System.out.println("desafio do professor um ");
 							soletrar.setarIconeProfessor("nerd1");
-							
+							audio.setarFaixaSorteio(professor.getCodigo());
+
+							break;
+						}
+						case 1: {
+							System.out.println("desafio do professor dois");
+							soletrar.setarIconeProfessor("loira1");
+							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 2: {
-							System.out.println("desafio do professor dois");
-							soletrar.setarIconeProfessor("loira1");
+							System.out.println("desafio do professor tres ");
+							soletrar.setarIconeProfessor("saradona1");
+							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 3: {
-							System.out.println("desafio do professor tres ");
-							soletrar.setarIconeProfessor("saradona1");
+							System.out.println("desafio do  professor quatro");
+							soletrar.setarIconeProfessor("nerdinha1");
+							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 4: {
-							System.out.println("desafio do  professor quatro");
+							System.out.println("desafio do  professor cinco");
+							soletrar.setarIconeProfessor("mascarado1");
+							audio.setarFaixaSorteio(professor.getCodigo());
+							break;
+						}
+						case 5: {
+							System.out.println("desafio do  professor seis");
+							soletrar.setarIconeProfessor("profa1");
+							audio.setarFaixaSorteio(professor.getCodigo());
+							break;
+						}
+						case 6: {
+							System.out.println("desafio do  professor sete");
 							soletrar.setarIconeProfessor("veio1");
+							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 
 						}
 
-						
 						janela.remove(fase);
 						MudarTela(soletrar, fase);
 						janela.setVisible(true);

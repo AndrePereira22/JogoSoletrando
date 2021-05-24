@@ -20,7 +20,7 @@ public class Soletrar extends JPanel {
 	private JLabel professor, main;
 	private JLabel fundo;
 	private JLabel pontos, lblTempo;
-	private JButton btnReiniciar, btnComoJogar, btnOuvir, btnConfirmar;
+	private JButton btnReiniciar, btnComoJogar, btnOuvir, btnConfirmar,btnPular;
 	private JPanel jpPalavra;
 	private JPanel DICAS;
 	private JLabel dica;
@@ -50,10 +50,17 @@ public class Soletrar extends JPanel {
 		add(btnOuvir);
 
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(625, 166, 138, 41);
+		btnConfirmar.setBounds(625, 130, 138, 41);
 		btnConfirmar.setIcon(new ImageIcon(getClass().getResource("/confirmar.png")));
 		btnConfirmar.setContentAreaFilled(false);
 		add(btnConfirmar);
+		
+		
+		btnPular = new JButton("Confirmar");
+		btnPular.setBounds(625, 190, 138, 41);
+		btnPular.setIcon(new ImageIcon(getClass().getResource("/pular.png")));
+		btnPular.setContentAreaFilled(false);
+		add(btnPular);
 
 		pontos = new JLabel("0");
 		pontos.setBounds(698, 405, 32, 24);
@@ -82,7 +89,7 @@ public class Soletrar extends JPanel {
 
 		professor = new JLabel();
 		professor.setIcon(new ImageIcon(getClass().getResource("/nerd1.png")));
-		professor.setBounds(40, 440, 70, 110);
+		professor.setBounds(35, 380, 100, 167);
 
 		add(professor);
 
@@ -132,6 +139,10 @@ public class Soletrar extends JPanel {
 
 	public JLabel getDica() {
 		return dica;
+	}
+
+	public JButton getBtnPular() {
+		return btnPular;
 	}
 
 }

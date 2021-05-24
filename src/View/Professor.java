@@ -13,17 +13,18 @@ public class Professor {
 	private int x, y;
 	private int largura, altura;
 	private ImageIcon referencia;
-	private int professor;
+	private int codigo;
 	private boolean isVisivel;
 	private static int[] posX = { 576 };
 	private static int[] posY = { 192 };
 	private static ArrayList<Professor> professores = new ArrayList<Professor>();
+	private static ArrayList<Professor> auxProfessores = new ArrayList<Professor>();
 
-	public Professor(String nome,int x, int y, int professor) {
+	public Professor(String nome, int x, int y, int professor) {
 
 		this.x = x;
 		this.y = y;
-		this.professor=professor;
+		this.codigo = professor;
 
 		referencia = new ImageIcon(getClass().getResource("/" + nome + ".png"));
 
@@ -35,11 +36,19 @@ public class Professor {
 		isVisivel = true;
 	}
 
-	
+	public static void addProfessoresAux() {
+		auxProfessores.add(new Professor("nerd", 200, 400, 0));
+		auxProfessores.add(new Professor("loira", 380, 430, 1));
+		auxProfessores.add(new Professor("saradona", 520, 430, 2));
+		auxProfessores.add(new Professor("nerdinha", 650, 430, 3));
+		auxProfessores.add(new Professor("mascarado", 610, 430, 4));
+		auxProfessores.add(new Professor("profa", 420, 430, 5));
+		auxProfessores.add(new Professor("veio", 520, 430, 6));
+	}
+
 	public static ArrayList<Professor> getProfessores() {
 		return professores;
 	}
-
 
 	public static void addProfessor(Professor cidade) {
 		professores.add(cidade);
@@ -85,12 +94,18 @@ public class Professor {
 		return altura;
 	}
 
-	public int getProfessor() {
-		return professor;
+	
+
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setProfessor(int professor) {
-		this.professor = professor;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public static ArrayList<Professor> getAuxProfessores() {
+		return auxProfessores;
 	}
 
 }

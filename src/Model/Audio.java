@@ -21,6 +21,8 @@ public class Audio {
 	private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
 	private ArrayList<Dica> definicoes = new ArrayList<Dica>();
 	private int numero;
+	private String temp;
+	private int minimo = 0, maximo = 24;
 
 	public Audio() {
 
@@ -28,24 +30,26 @@ public class Audio {
 		lerDefinicoes();
 	}
 
+	public void ouvirPalavra() {
+		clip = Applet.newAudioClip(getClass().getResource("/" + temp + ".wav"));
+		clip.play();
+	}
+
 	public void carregarPalavra() {
 
-		numero = sorteio.nextInt(palavras.size());
+		numero = minimo + sorteio.nextInt(maximo);
 		palavraSorteada = palavras.get(numero);
 
 		setDica(definicoes.get(numero).getDefinicao());
 
 		while (palavraSorteada.isCompleto()) {
-			numero = sorteio.nextInt(palavras.size());
+			numero = minimo + sorteio.nextInt(maximo);
 			palavraSorteada = palavras.get(numero);
 
 			setDica(definicoes.get(numero).getDefinicao());
 
 		}
-		String p = palavraSorteada.getPalavra();
-
-		clip = Applet.newAudioClip(getClass().getResource("/" + p + ".wav"));
-		clip.play();
+		temp = palavraSorteada.getPalavra();
 
 	}
 
@@ -135,4 +139,56 @@ public class Audio {
 		Dica = dica;
 	}
 
+	public AudioClip getClip() {
+		return clip;
+	}
+
+	public void setClip(AudioClip clip) {
+		this.clip = clip;
+	}
+
+	public void setarFaixaSorteio(int valor) {
+
+		switch (valor) {
+		case 0: {
+			minimo = 0;
+			maximo = 24;
+			break;
+
+		}
+		case 1: {
+			minimo = 25;
+			maximo = 49;
+			break;
+		}
+		case 2: {
+			minimo = 49;
+			maximo = 74;
+			break;
+		}
+		case 3: {
+			minimo = 74;
+			maximo = 99;
+			break;
+		}
+		case 4: {
+			minimo = 99;
+			maximo = 124;
+			break;
+		}
+		case 5: {
+			minimo = 124;
+			maximo = 149;
+			break;
+		}
+		case 6: {
+			minimo = 149;
+			maximo = 174;
+			break;
+		}
+	
+
+	}
+	}
 }
+
