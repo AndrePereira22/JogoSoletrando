@@ -11,6 +11,10 @@ public class App {
 		Janela janela = new Janela(800,618);
 
 		new Controle(janela).run();;
+		
+		
+		
+
 	
 	}
 

@@ -81,9 +81,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		}
 		if (e.getSource() == soletrar.getBtnPular()) {
 
-			audio.carregarPalavra();
-			soletrar.getDica().setText(audio.getDica());
-			audio.ouvirPalavra();
+			pularPalavra();
 
 		}
 
@@ -110,14 +108,15 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 			System.out.println(soletrar.getCampo().getText() + " " + audio.getPalavraSorteada().getPalavra());
 
 			audio.mudarPalavra();
-			System.out.println("acertou");
 			placar++;
 
-			soletrar.getCampo().setText("");
+			
 
 		} else {
-			System.out.println("errou");
-			System.out.println(soletrar.getCampo().getText() + " " + audio.getPalavraSorteada().getPalavra());
+		
+			soletrar.getCampo().setText("");
+			pularPalavra();
+			
 		}
 
 	}
@@ -143,6 +142,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 			placar = 0;
 			controleFase++;
 			addNovoProfessor();
+			audio.setClip(null);
 		}
 
 	}
@@ -166,6 +166,12 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	public void iniciar() {
 
 	}
+	public void pularPalavra() {
+		audio.carregarPalavra();
+		soletrar.getDica().setText(audio.getDica());
+		audio.ouvirPalavra();
+	}
+	
 
 	@Override
 	public void keyPressed(KeyEvent e) {

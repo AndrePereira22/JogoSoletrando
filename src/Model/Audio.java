@@ -36,21 +36,27 @@ public class Audio {
 	}
 
 	public void carregarPalavra() {
-
-		numero = minimo + sorteio.nextInt(maximo);
-		palavraSorteada = palavras.get(numero);
-
-		setDica(definicoes.get(numero).getDefinicao());
-
-		while (palavraSorteada.isCompleto()) {
-			numero = minimo + sorteio.nextInt(maximo);
+		
+		try {
+			numero = sorteio.nextInt((maximo - minimo) + 1) + minimo;
 			palavraSorteada = palavras.get(numero);
 
 			setDica(definicoes.get(numero).getDefinicao());
 
-		}
-		temp = palavraSorteada.getPalavra();
+			while (palavraSorteada.isCompleto()) {
+				numero = sorteio.nextInt((maximo - minimo) + 1) + minimo;
+				palavraSorteada = palavras.get(numero);
 
+				setDica(definicoes.get(numero).getDefinicao());
+
+			}
+			temp = palavraSorteada.getPalavra();
+
+		} catch( java.lang.IndexOutOfBoundsException e) {
+			// TODO: handle exception
+		}
+
+		
 	}
 
 	public void lerPalavras() {
@@ -186,9 +192,7 @@ public class Audio {
 			maximo = 174;
 			break;
 		}
-	
 
-	}
+		}
 	}
 }
-
