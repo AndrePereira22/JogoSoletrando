@@ -103,20 +103,32 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	}
 
 	private void verificarPalavra() {
+		try {
+			if (soletrar.getCampo().getText().equals(audio.getPalavraSorteada().getPalavra())) {
 
-		if (soletrar.getCampo().getText().equals(audio.getPalavraSorteada().getPalavra())) {
-			System.out.println(soletrar.getCampo().getText() + " " + audio.getPalavraSorteada().getPalavra());
+				soletrar.getCampo().setText("");
+				audio.mudarPalavra();
+				audio.carregarPalavra();
+				placar++;
 
-			audio.mudarPalavra();
-			placar++;
+				audio.ouvirAlerta("acertou");
 
-			
+			} else {
 
-		} else {
-		
-			soletrar.getCampo().setText("");
-			pularPalavra();
-			
+				soletrar.getCampo().setText("");
+				audio.ouvirAlerta("errou");
+
+				Thread.sleep(2000);
+
+				pularPalavra();
+			}
+
+			Thread.sleep(2000);
+			soletrar.mudarPraSombra();
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
@@ -138,7 +150,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 
 	private void runControleDoJogo() {
 
-		if (placar == 1) {
+		if (placar == 6) {
 			placar = 0;
 			controleFase++;
 			addNovoProfessor();
@@ -154,7 +166,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		MudarTela(fase, soletrar);
 		audio.setClip(null);
 		janela.setVisible(true);
-		
+
 	}
 
 	public void MudarTela(JPanel aparece, JPanel some) {
@@ -166,12 +178,12 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	public void iniciar() {
 
 	}
+
 	public void pularPalavra() {
 		audio.carregarPalavra();
 		soletrar.getDica().setText(audio.getDica());
-		audio.ouvirPalavra();
+
 	}
-	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -186,44 +198,44 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 						switch (professor.getCodigo()) {
 
 						case 0: {
-							System.out.println("desafio do professor um ");
+
 							soletrar.setarIconeProfessor("nerd1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 
 							break;
 						}
 						case 1: {
-							System.out.println("desafio do professor dois");
+
 							soletrar.setarIconeProfessor("loira1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 2: {
-							System.out.println("desafio do professor tres ");
+
 							soletrar.setarIconeProfessor("saradona1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 3: {
-							System.out.println("desafio do  professor quatro");
+
 							soletrar.setarIconeProfessor("nerdinha1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 4: {
-							System.out.println("desafio do  professor cinco");
+
 							soletrar.setarIconeProfessor("mascarado1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 5: {
-							System.out.println("desafio do  professor seis");
+
 							soletrar.setarIconeProfessor("profa1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 							break;
 						}
 						case 6: {
-							System.out.println("desafio do  professor sete");
+
 							soletrar.setarIconeProfessor("veio1");
 							audio.setarFaixaSorteio(professor.getCodigo());
 							break;

@@ -14,12 +14,14 @@ import java.util.Random;
 public class Audio {
 
 	@SuppressWarnings("deprecation")
-	private AudioClip clip;
+	private AudioClip clip, alerta;
 	public Random sorteio = new Random();
 	private String Dica;
 	private Palavra palavraSorteada;
+
 	private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
 	private ArrayList<Dica> definicoes = new ArrayList<Dica>();
+
 	private int numero;
 	private String temp;
 	private int minimo = 0, maximo = 24;
@@ -35,8 +37,13 @@ public class Audio {
 		clip.play();
 	}
 
+	public void ouvirAlerta(String audio) {
+		alerta = Applet.newAudioClip(getClass().getResource("/" + audio + ".wav"));
+		alerta.play();
+	}
+
 	public void carregarPalavra() {
-		
+
 		try {
 			numero = sorteio.nextInt((maximo - minimo) + 1) + minimo;
 			palavraSorteada = palavras.get(numero);
@@ -52,11 +59,10 @@ public class Audio {
 			}
 			temp = palavraSorteada.getPalavra();
 
-		} catch( java.lang.IndexOutOfBoundsException e) {
+		} catch (java.lang.IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
 
-		
 	}
 
 	public void lerPalavras() {
@@ -74,6 +80,7 @@ public class Audio {
 				for (String each : a)
 
 					palavras.add(new Palavra(each));
+
 			}
 
 		} catch (FileNotFoundException el) {
@@ -116,7 +123,6 @@ public class Audio {
 	}
 
 	public void mudarPalavra() {
-
 		palavras.get(numero).setCompleto(true);
 
 	}
