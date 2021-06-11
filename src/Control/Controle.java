@@ -8,12 +8,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 import Model.Audio;
+import Model.Professor;
 import Model.Sprite;
 import View.Fase;
 import View.Janela;
 import View.Menu;
 import View.Opcao;
-import View.Professor;
 import View.Soletrar;
 
 @SuppressWarnings("deprecation")
@@ -82,6 +82,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		if (e.getSource() == soletrar.getBtnPular()) {
 
 			pularPalavra();
+			audio.ouvirPalavra();
 
 		}
 
@@ -98,7 +99,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 			} else {
 				audio.ouvirPalavra();
 			}
-
+			soletrar.getCampo().grabFocus();
 		}
 	}
 
@@ -107,24 +108,25 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 			if (soletrar.getCampo().getText().equals(audio.getPalavraSorteada().getPalavra())) {
 
 				soletrar.getCampo().setText("");
-				audio.mudarPalavra();
+				audio.concluirPalavra();
 				audio.carregarPalavra();
+
 				placar++;
 
 				audio.ouvirAlerta("acertou");
+				mudarDefinicao();
 
 			} else {
 
-				soletrar.getCampo().setText("");
 				audio.ouvirAlerta("errou");
 
 				Thread.sleep(2000);
 
 				pularPalavra();
 			}
+			soletrar.getCampo().setText("");
 
 			Thread.sleep(2000);
-			soletrar.mudarPraSombra();
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -181,8 +183,12 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 
 	public void pularPalavra() {
 		audio.carregarPalavra();
-		soletrar.getDica().setText(audio.getDica());
+		mudarDefinicao();
 
+	}
+
+	public void mudarDefinicao() {
+		soletrar.getDica().setText(audio.getDica());
 	}
 
 	@Override

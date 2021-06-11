@@ -16,9 +16,8 @@ public class Audio {
 	@SuppressWarnings("deprecation")
 	private AudioClip clip, alerta;
 	public Random sorteio = new Random();
-	private String Dica;
 	private Palavra palavraSorteada;
-
+	private String dica = "";
 	private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
 	private ArrayList<Dica> definicoes = new ArrayList<Dica>();
 
@@ -48,21 +47,22 @@ public class Audio {
 			numero = sorteio.nextInt((maximo - minimo) + 1) + minimo;
 			palavraSorteada = palavras.get(numero);
 
-			setDica(definicoes.get(numero).getDefinicao());
-
 			while (palavraSorteada.isCompleto()) {
 				numero = sorteio.nextInt((maximo - minimo) + 1) + minimo;
 				palavraSorteada = palavras.get(numero);
 
-				setDica(definicoes.get(numero).getDefinicao());
-
 			}
+			dica = definicoes.get(numero).getDefinicao();
 			temp = palavraSorteada.getPalavra();
 
 		} catch (java.lang.IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
 
+	}
+
+	public String getDica() {
+		return dica;
 	}
 
 	public void lerPalavras() {
@@ -76,7 +76,7 @@ public class Audio {
 
 			while ((temp = arqIn.readLine()) != null) {
 				// Aqui gera a sua "lista". No caso, imprimi cada linha na tela.
-				String[] a = temp.split(";");
+				String[] a = temp.split("\t");
 				for (String each : a)
 
 					palavras.add(new Palavra(each));
@@ -102,7 +102,7 @@ public class Audio {
 
 			while ((temp = arqIn.readLine()) != null) {
 				// Aqui gera a sua "lista". No caso, imprimi cada linha na tela.
-				String[] a = temp.split(";");
+				String[] a = temp.split("\t");
 				for (String each : a)
 
 					definicoes.add(new Dica(each));
@@ -122,7 +122,7 @@ public class Audio {
 		return numero;
 	}
 
-	public void mudarPalavra() {
+	public void concluirPalavra() {
 		palavras.get(numero).setCompleto(true);
 
 	}
@@ -141,14 +141,6 @@ public class Audio {
 
 	public Palavra getPalavraSorteada() {
 		return palavraSorteada;
-	}
-
-	public String getDica() {
-		return Dica;
-	}
-
-	public void setDica(String dica) {
-		Dica = dica;
 	}
 
 	public AudioClip getClip() {

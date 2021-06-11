@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Model.Jogo;
 import Model.Mapa;
+import Model.Professor;
 import Model.Sprite;
 
 public class Fase extends Jogo {

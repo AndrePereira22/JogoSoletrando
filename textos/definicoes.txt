@@ -1,20 +1,45 @@
-acesso ou elevação a cargo ou categoria superior
-sinal gráfico em forma de estrela (*)
-plaqueta cerâmica vidrada, de diversas cores e motivos
-relativo à Bahia, ou o que é seu natural ou habitante
-Tabuleiro sobre o qual são transportados alimentos prontos
-que traz benefício, que faz caridade, beneficiador, caritativo
-passagem de um líquido ao estado de vapor
-Desvio de uma regra ou de um padrão convencionalmente aceito
-aparelho que projeta intenso facho de luz
-conjunto de características que distinguem uma pessoa
-interrupção de uma atividade, parada, suspensão
-de modo simples, com simplicidade
-saliência arqueada, guarnecida de pelos acima da órbita ocular
-concessão de dinheiro feita pelo governo a determinadas atividades
-que ultrapassa a necessidade, que é mais do que se necessita
-substância  que se adiciona a determinado alimento
-vaso côncavo de barro, metal, louça eta
+artifício enganador, cilada ,esparrela, ardil, armação.
+escapar, desviar de perigo, pessoa ou algo ameaçador.
+qualquer coisa de forma esférica ou redonda.
+é uma unidade de medida de massa.
+que é destituído de sentido, de racionalidade.
+pessoa habilitada a prestar assistência jurídica.
+pequena e fina haste de aço polido.
+astro sem luz própria que gira em torno de uma estrela .
+que revela inquietação; aflito, angustiado.
+obstáculo, dificuldade que desafia a capacidade .
+utensílio para cortar, formado por duas lâminas.
+agir ou considerar com transigência; anuir, consentir.
+vaso côncavo de barro, metal, louça .
+sinal gráfico em forma de estrela (*).
+que está muito contente, que se sente afortunado.
+é o órgão de reprodução das plantas.
+na parte posterior (de pessoa, animal, objeto etc).
+falta de pontualidade no cumprimento de uma obrigação ou compromisso
+plaqueta cerâmica vidradacom que se guarnecem paredes, chãos etc.
+relativo à Bahia, estado do Brasil, ou o que é seu natural ou habitante.
+tabuleiro de madeira, onde são transportados alimentos.
+substância sólida, transparente e frágil.
+qualquer preparação em que se usa leite engrossado com farinha
+peça circular que se prende a um eixo, para fazê-lo girar.
+proeminência externa do abdome.
+diz-se de ou cor da lã natural ou de fibras têxteis não tingidas.
+que faz caridade, caritativo.
+sal ou ânion (HCO3) derivado do ácido carbônico.
+veículo de duas rodas,movido por um sistema de pedais.
+pedaço ou porção de matéria sólida.
+vegetação típica do Nordeste brasileiro.
+profissional que corta, arranja, penteia e trata os cabelos.
+fita ou cordão que se usa em certos tipos de calçados.
+estado de fadiga provocado por esforço físico ou mental.
+que procura confundir, para levar ao erro, ardiloso, astucioso.
+nome de vários crustáceos decápodes.
+planta comestível bisanual cultivada por sua raiz axial. 
+parte do sistema nervoso central situada na caixa craniana.
+peça do vestuário  destinada a cobrir a cabeça.
+o número cardinal logo acima de 49.
+local de consulta, tratamento e realização de exames,cirurgias.
+irritação cutânea provocada pelo ato continuado de coçar.
 a
 a
 a
@@ -74,7 +99,6 @@ a
 a
 a
 a
-aa
 a
 a
 a
@@ -138,51 +162,14 @@ a
 a
 a
 a
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a

@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import Model.RoundJTextField;
 
 public class Soletrar extends JPanel {
 	/**
@@ -83,6 +86,7 @@ public class Soletrar extends JPanel {
 		campo.setForeground(Color.BLUE);
 		campo.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		campo.setBounds(235, 128, 330, 48);
+		campo.setHorizontalAlignment(SwingConstants.CENTER);
 		campo.setColumns(10);
 
 		add(campo);

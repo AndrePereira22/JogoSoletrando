@@ -1,5 +1,5 @@
 
-package View;
+package Model;
 
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -38,12 +38,12 @@ public class Professor {
 
 	public static void addProfessoresAux() {
 		auxProfessores.add(new Professor("nerd", 200, 400, 0));
-		auxProfessores.add(new Professor("loira", 380, 430, 1));
-		auxProfessores.add(new Professor("saradona", 520, 430, 2));
-		auxProfessores.add(new Professor("nerdinha", 650, 430, 3));
-		auxProfessores.add(new Professor("mascarado", 610, 430, 4));
-		auxProfessores.add(new Professor("profa", 420, 430, 5));
-		auxProfessores.add(new Professor("veio", 520, 430, 6));
+		auxProfessores.add(new Professor("loira", 380, 400, 1));
+		auxProfessores.add(new Professor("saradona", 520, 400, 2));
+		auxProfessores.add(new Professor("nerdinha", 650, 400, 3));
+		auxProfessores.add(new Professor("mascarado", 610, 400, 4));
+		auxProfessores.add(new Professor("profa", 420, 400, 5));
+		auxProfessores.add(new Professor("veio", 520, 400, 6));
 	}
 
 	public static ArrayList<Professor> getProfessores() {

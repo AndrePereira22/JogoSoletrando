@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
 
+import Model.Professor;
 import Model.Sprite;
-import View.Professor;
 import View.Fase;
 
 public class Movimento extends Thread implements KeyListener {

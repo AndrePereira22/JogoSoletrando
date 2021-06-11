@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
-import View.Professor;
 import View.Fase;
 
 public class Sprite extends Thread {
