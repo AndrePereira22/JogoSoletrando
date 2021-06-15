@@ -17,6 +17,8 @@ public class Janela extends JFrame {
 	private Opcao opcao;
 	private Fase fase;
 	private Soletrar soletrar;
+	private ComoJogar comoJogar;
+	
 
 	public Janela(int largura, int altura) {
 
@@ -32,16 +34,23 @@ public class Janela extends JFrame {
 		opcao = new Opcao(800, 600);
 		fase = new Fase("sprite1.png");
 		soletrar = new Soletrar(800, 600);
+		comoJogar = new ComoJogar(800,600);
+		
 
 		add(menu);
 		add(opcao);
 		add(fase);
 		add(soletrar);
-
-		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage("baseDados\\caverna.png");
+		add(comoJogar);
+		
+		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage("imagens\\icone.png");
 		this.setIconImage(iconeTitulo);
 		this.setVisible(true);
 
+	}
+
+	public ComoJogar getComoJogar() {
+		return comoJogar;
 	}
 
 	public Menu getMenu() {

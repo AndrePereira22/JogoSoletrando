@@ -12,9 +12,6 @@ public class App {
 
 		new Controle(janela).run();;
 		
-		
-		
-
 	
 	}
 

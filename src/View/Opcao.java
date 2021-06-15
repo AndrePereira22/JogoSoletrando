@@ -76,6 +76,8 @@ public class Opcao extends JPanel {
 		fundo.setBounds(0, 0, 800, 600);
 		add(fundo);
 
+		setVisible(false);
+
 	}
 
 	public JButton getBtnVoltar() {

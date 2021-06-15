@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import Model.Audio;
 import Model.Professor;
 import Model.Sprite;
+import View.ComoJogar;
 import View.Fase;
 import View.Janela;
 import View.Menu;
@@ -25,6 +26,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	private Audio audio;
 	private Opcao opcao;
 	private Fase fase;
+	private ComoJogar comoJogar;
 	private Movimento mover;
 	private Soletrar soletrar;
 	private int controleFase = 0;
@@ -41,6 +43,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		this.mover = new Movimento(fase.getPersonagem());
 		this.soletrar = janela.getSoletrar();
 		this.personagem = fase.getPersonagem();
+		this.comoJogar = janela.getComoJogar();
 
 		Professor.addProfessoresAux();
 
@@ -60,6 +63,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		fase.addKeyListener(this);
 		soletrar.getBtnOuvir().addActionListener(this);
 		soletrar.getBtnConfirmar().addActionListener(this);
+
 		menu.getSair().addActionListener(this);
 		menu.getCreditos().addActionListener(this);
 		menu.getAjuda().addActionListener(this);
@@ -67,6 +71,8 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		opcao.getBtnVoltar().addActionListener(this);
 		opcao.getBtnIniciar().addActionListener(this);
 		soletrar.getBtnPular().addActionListener(this);
+		soletrar.getBtnReiniciar().addActionListener(this);
+		soletrar.getBtnComoJogar().addActionListener(this);
 
 	}
 
@@ -74,6 +80,10 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 		if (e.getSource() == soletrar.getBtnConfirmar()) {
 
 			verificarPalavra();
+		}
+		if (e.getSource() == menu.getAjuda()) {
+			MudarTela(comoJogar, menu);
+
 		}
 		if (e.getSource() == menu.getJogar()) {
 			MudarTela(opcao, menu);
@@ -83,6 +93,16 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 
 			pularPalavra();
 			audio.ouvirPalavra();
+
+		}
+		if (e.getSource() == soletrar.getBtnReiniciar()) {
+
+			soletrar.getCampo().setText("");
+
+		}
+		if (e.getSource() == soletrar.getBtnComoJogar()) {
+
+			MudarTela(null, soletrar);
 
 		}
 
@@ -105,7 +125,9 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 
 	private void verificarPalavra() {
 		try {
-			if (soletrar.getCampo().getText().equals(audio.getPalavraSorteada().getPalavra())) {
+
+			String palavra = soletrar.getCampo().getText().toLowerCase();
+			if (palavra.equals(audio.getPalavraSorteada().getPalavra())) {
 
 				soletrar.getCampo().setText("");
 				audio.concluirPalavra();

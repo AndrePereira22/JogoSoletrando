@@ -119,6 +119,8 @@ public class Soletrar extends JPanel {
 		fundo = new JLabel(new ImageIcon(getClass().getResource("/plano.png")));
 		fundo.setBounds(0, 0, 800, 600);
 		add(fundo);
+		
+		setVisible(false);;
 
 	}
 
@@ -153,6 +155,14 @@ public class Soletrar extends JPanel {
 
 	public JButton getBtnPular() {
 		return btnPular;
+	}
+
+	public JButton getBtnReiniciar() {
+		return btnReiniciar;
+	}
+
+	public JButton getBtnComoJogar() {
+		return btnComoJogar;
 	}
 
 }
