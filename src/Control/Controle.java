@@ -17,7 +17,7 @@ import View.Menu;
 import View.Opcao;
 import View.Soletrar;
 
-@SuppressWarnings("deprecation")
+
 public class Controle implements Runnable, ActionListener, KeyListener {
 
 	private Janela janela;
@@ -206,7 +206,7 @@ public class Controle implements Runnable, ActionListener, KeyListener {
 	public void pularPalavra() {
 		audio.carregarPalavra();
 		mudarDefinicao();
-
+		soletrar.getCampo().setText("");
 	}
 
 	public void mudarDefinicao() {
